@@ -1,21 +1,19 @@
 import React from 'react';
 import { TextField, Button,  Select } from '@material-ui/core';
-import PlacesAutocomplete from 'react-places-autocomplete';
+import { Link } from "react-router-dom";
+import LocationSearchInput from './SearchLocationInput';
 
 
 const buttonStyle = {
     "backgroundColor": "#FD7272",
-    "width": "15em",
+    "width": "12em",
     "padding": "3%",
-    "marginTop": "4%",
+    "margin": "0 auto",
     "color": "#F8EFBA",
     "cursor": "pointer",
     "fontSize": 20,
-    "fontFamily": "'Open Sans', sans-serif"
-}
-
-const textFieldStyle = {
-    "marginBottom": "1em"
+    "fontFamily": "'Open Sans', sans-serif",
+    "borderRadius": 10
 }
 
 class Home extends React.Component {
@@ -29,15 +27,23 @@ class Home extends React.Component {
         }
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault()
+        const payload = { ...this.state }
+        //payload.id = this.props.carTotal + 1
+        console.log("COORDS", payload)
+        // add function to save the payload to the db
+    }
+
     render() {
         return (
            <main>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <label style={{"marginBottom": "2em", "fontFamily": "'Open Sans', sans-serif"}}>Where should we search?</label>
-                    <TextField style={textFieldStyle}/>
-                    <TextField style={textFieldStyle}/>
-                    <TextField style={{"marginBottom": "3em"}}/>
-                    <label style={{"marginBottom": "2em", "fontFamily": "'Open Sans', sans-serif"}}>What type of place are you looking for?</label>
+                    <LocationSearchInput />
+                    <LocationSearchInput />
+                    <LocationSearchInput style={{"marginBottom": "3em"}} required/>
+                    <label style={{"marginBottom": "2em", marginTop: "2em", "fontFamily": "'Open Sans', sans-serif"}}>What type of venue are you looking for?</label>
                     <Select
                         style={{"marginBottom": "3em"}}
                         native
@@ -45,13 +51,15 @@ class Home extends React.Component {
                             name: 'age',
                             id: 'filled-age-native-simple',
                         }}
+                        required
                         >
                         <option aria-label="None" label="Please select a category..." selected disabled />
-                        <option value={10}>Ten</option>
-                        <option value={20}>Twenty</option>
-                        <option value={30}>Thirty</option>
+                        <option value={10}>Restaurant</option>
+                        <option value={20}>Coffee</option>
+                        <option value={30}>Bars</option>
+                        {/* <option value={30}>Parks</option> */}
                     </Select>
-                    <Button type="submit" style={buttonStyle} variant="contained">Find</Button>
+                    <Link to='/map'><Button type='submit' style={buttonStyle} variant="contained">Find</Button></Link>
                 </form>
             </main>
         )

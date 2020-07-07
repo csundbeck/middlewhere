@@ -66,7 +66,9 @@ form {
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    width: 40%;
+    justify-items: center;
+    align-items: center;
+    width: 80%;
     margin: 0 auto;
 }
 
@@ -74,20 +76,46 @@ form p {
     margin: 2em;
 }
 
+#mapSection, #accountSection {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+#favoritesSection {
+    display: grid;
+    grid-template-columns: 22% 22% 22% 22%;
+    grid-template-rows: 22% 22% 22% 22%;
+  }
+
 input {
     margin-top: 0.5%;
     margin-bottom: 0.5%;
     padding: 1%;
     border-radius: 10px;
-    width: 40%;
     justify-self: center;
     align-self: center;
+}
+
+
+form > div {
+    width: 50%;
+}
+.places-autocomplete-input {
+    margin: 0 auto;
+}
+
+.autocomplete-dropdown-container {
+    font-family: 'Open Sans', sans-serif;
+    color: slategray;
+    padding: 1%;
+    margin: 0;
 }
 
 #category-drop {
     justify-self: center;
     align-self: center;
-    width: 30%;
+    width: 10%;
     padding: 1%;
     transition: 0.4s;
 }
