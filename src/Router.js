@@ -9,16 +9,17 @@ import Account from './components/Account'
 const Router = (props) => {
     return (
         <Switch>
-             {/* <Route
+            <Route
                 component={props.isLoggedin ? Home : Login}
+                path={props.isLoggedin ? '/' : '/login'}
                 // render={(props) => {
                 //     return (
-                //       props.isLoggedIn == true ?
-                //        :
+                //       props.isLoggedIn === true ?
+                //       <Redirect to="/" /> : 
                 //       <Redirect to="/login" /> 
                 //     );
-                // }}
-              /> */}
+                //}}
+              />
             <Route exact path="/" component={Home} />
             <Route path="/login" render={(props) => (
                 <Login {...props} isLoggedIn={props.isLoggedIn} handleLogin={props.handleLogin} />

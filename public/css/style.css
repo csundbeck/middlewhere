@@ -17,7 +17,7 @@ time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;
+    vertical-align: baseline;
 }
 
 body {
@@ -97,7 +97,6 @@ input {
     align-self: center;
 }
 
-
 form > div {
     width: 50%;
 }
@@ -164,17 +163,99 @@ button:hover {
 }
 
 #restart-btn {
+    position: fixed;
     justify-self: center;
     align-self: center;
+    margin-top: -100
 }
 
 #map {
-    height: 28em;
-    width: 50em;
-    background-color: #000000;
+    height:32em;
+    width: 60em;
     display: inline;
     margin: auto;
+    position: fixed;
 }
+
+#placesSection {
+    border-left: slategray solid 2px;
+    border-bottom: slategray solid 2px;
+    /* padding: 0 4%; */
+    /* width: 22%; */
+    font-family: 'Open Sans', sans-serif;
+    background-color: #E8EAED;
+    /* overflow-y: scroll; */
+    overflow-x: hidden;
+}
+
+#placesSection h3 {
+    font-family: 'Leckerli One', cursive;
+    color: slategray;
+    width: 100%;
+    font-style: italic;
+    font-size: 26px
+}
+
+#mapSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#poiList {
+    display: flex;
+    flex-direction: column
+}
+
+#poiList li {
+    display: inline-flex;
+    flex-direction: row;
+    margin: 1em;
+    list-style: none;
+    background:#d4d8dd;
+    margin: 0;
+    padding: 8%;
+    justify-content: space-evenly;
+    align-content: space-around;
+    border-bottom: black 1px solid;
+}
+
+.like-button {
+    float: left;
+    margin: 0;
+    color: slategray
+}
+
+.like-button.liked {
+    color: red;
+}
+
+#poiList li:nth-of-type(odd) {
+    background:#E8EAED;
+  }
+
+#favoritesSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+#favoritesSection > h2 {
+    font-family: 'Leckerli One', cursive;
+    color: #FD7272;
+    font-size: 2.5em;
+    margin-bottom: 2%;
+}
+
+.favoriteItem li {
+    display: inline-block;
+    margin: 1em;
+    list-style: none;
+    border: slategray solid 2px;
+    border-radius: 10px;
+    padding: 1em;
+  }
 
 #map, #category-drop {
     margin-top: 1%;

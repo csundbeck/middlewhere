@@ -7,6 +7,8 @@ import {
     DialogTitle
 } from '@material-ui/core'
 import { Link } from "react-router-dom";
+import Validation from 'react-validation';
+
 
 const linkStyle ={
     "fontSize": 14,
@@ -19,11 +21,12 @@ const linkStyle ={
 class CreateUser extends Component {
     state = {
         open: false,
-        firstnname: '',
+        firstname: '',
         lastname: '',
         username: '',
         password: '',
-        email: ''
+        email: '',
+        msg: ''
     }
 
     toggleDialog = () => this.setState({ open: !this.state.open })
@@ -32,27 +35,64 @@ class CreateUser extends Component {
         const newState = { ...this.state }
         newState[e.target.id] = e.target.value
         this.setState(newState)
+        console.log(newState);
     }
+
+    // handleSubmit(event) {
+    //     event.preventDefault()
+    //     var data = {
+    //         firstname: this.state.firstname,
+    //         lastname: this.state.lastname,
+    //         username: this.state.username,
+    //         password: this.state.password,
+    //         email: this.state.email
+    //     }
+    //     console.log(data)
+    //     fetch("/", {
+    //         method: 'POST',
+    //         headers: {'Content-Type': 'application/json'},
+    //         body: JSON.stringify(data)
+    //     }).then(function(response) {
+    //         if (response.status >= 400) {
+    //           throw new Error("Bad response from server");
+    //         }
+    //         return response.json();
+    //     }).then(function(data) {
+    //         console.log(data)    
+    //         if(data == "success"){
+    //            this.setState({
+    //                msg: "Thanks for signing up!",
+    //                open: false
+    //         });  
+    //         }
+    //     }).catch(function(err) {
+    //         console.log(err)
+    //     });
+    // }
 
     handleSubmit = (e) => {
         e.preventDefault()
         const payload = { ...this.state }
         //payload.id = this.props.carTotal + 1
         delete payload.open
+        this.setState({ open: false })
         console.log("THE USER", payload)
         // add function to save the payload to the db
-        this.setState({ open: false })
+        fetch("/createUser", {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+               },
+            body: JSON.stringify(payload)
+        }).then((messages) => {console.log(messages)})
+        // }).then(response => response.json();
+        // })
     }
 
     componentDidUpdate = (prevProps, prevState) => {
         if (prevState.open !== this.state.open) {
-            this.setState({
-                firstnname: '',
-                lastname: '',
-                username: '',
-                password: '',
-                email: ''
-            })
+            this.setState({ ...this.state })
         }
     }
 
@@ -79,7 +119,7 @@ class CreateUser extends Component {
                                 <TextField
                                     id="firstname" 
                                     placeholder="First Name" 
-                                    value={this.state.fisrtname} 
+                                    value={this.state.firstname} 
                                     onChange={this.handleTextChange}
                                     style={{marginBottom: "3%", width: '80%'}}
                                     required />
@@ -98,18 +138,18 @@ class CreateUser extends Component {
                                     style={{marginBottom: "3%", width: '80%'}}
                                     required />
                                 <TextField 
-                                    id="password" 
-                                    placeholder="Password" 
-                                    type="password"
-                                    value={this.state.password} 
-                                    onChange={this.handleTextChange}
-                                    style={{marginBottom: "3%", width: '80%'}}
-                                    required />
-                                <TextField 
                                     id="email"
                                     type="email"
                                     placeholder="Email" 
                                     value={this.state.email} 
+                                    onChange={this.handleTextChange}
+                                    style={{marginBottom: "3%", width: '80%'}}
+                                    required />
+                                <TextField 
+                                    id="password" 
+                                    placeholder="Password" 
+                                    type="password"
+                                    value={this.state.password} 
                                     onChange={this.handleTextChange}
                                     style={{marginBottom: "3%", width: '80%'}}
                                     required />

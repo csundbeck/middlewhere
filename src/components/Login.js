@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { TextField, Button} from '@material-ui/core';
 import { Link } from "react-router-dom";
 import CreateUser from "./CreateUser";
@@ -34,17 +34,15 @@ const Login = (props) => {
         <main>
             <form onSubmit={props.onClick}>
                 <TextField 
-                    id="standard-required"
                     style={textFieldStyle}
                     type="text"
                     placeholder="Username"
-                    required={true} />
+                    required />
                 <TextField
-                    id="outlined-password-input"
                     style={textFieldStyle}
                     type="password"
                     placeholder="Password"
-                    required={true} />
+                    required />
                 <Link style={buttonStyle} to='/'><Button onClick={handleLogin} style={buttonStyle} type="submit">Login</Button></Link>
             </form>
             <CreateUser />
