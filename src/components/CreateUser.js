@@ -7,8 +7,6 @@ import {
     DialogTitle
 } from '@material-ui/core'
 import { Link } from "react-router-dom";
-import Validation from 'react-validation';
-
 
 const linkStyle ={
     "fontSize": 14,

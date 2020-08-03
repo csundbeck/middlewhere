@@ -1,7 +1,5 @@
 import React from 'react';
 import { TextField, Button,  Select } from '@material-ui/core';
-import { Redirect } from 'react-router';
-import { Link } from "react-router-dom";
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -247,11 +245,9 @@ class Home extends React.Component {
                         onChange={this.catHandleSelect}
                         required
                         >
-                        {/* <option aria-label="None" label="Please select a category..." selected disabled /> */}
                         <MenuItem value={"restaurant"}>Restaurant</MenuItem>
                         <MenuItem value={"coffee"}>Coffee</MenuItem>
                         <MenuItem value={"bars"}>Bars</MenuItem>
-                        {/* <option value={30}>Parks</option> */}
                     </Select>
                     </FormControl>
                     <Button to='/map' type='submit' style={buttonStyle} variant="contained">Find</Button>

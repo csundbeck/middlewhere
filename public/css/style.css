@@ -239,6 +239,9 @@ button:hover {
     flex-direction: column;
     justify-content: center;
     align-content: center;
+    justify-items: center;
+    align-items: center;
+    font-family: 'Open Sans', sans-serif;
 }
 
 #favoritesSection > h2 {
@@ -248,13 +251,14 @@ button:hover {
     margin-bottom: 2%;
 }
 
-.favoriteItem li {
+.favoriteItem {
     display: inline-block;
     margin: 1em;
     list-style: none;
     border: slategray solid 2px;
     border-radius: 10px;
     padding: 1em;
+    text-align: center;
   }
 
 #map, #category-drop {
@@ -353,16 +357,35 @@ button:hover {
 
 #poiNav {
     right: 0;
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 0; /* Stay at the top */
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
     background-color: #57606f; 
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
-    transition: 0.4s; /* 0.5 second transition effect to slide in the sidenav */
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.4s;
     font-family: 'Open Sans', sans-serif;
+}
+
+.poiItem {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    border-bottom: slategray 2px solid;
+    padding: 4% 2%;
+    
+}
+
+.poiItem > i {
+    margin: 2%
+}
+
+.poiItem:nth-child(even) {
+    background-color: #DCDCDC;
 }
 
 .account-info {

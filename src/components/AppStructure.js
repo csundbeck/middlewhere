@@ -19,7 +19,7 @@ const buttonGroup = {
   "justiftContent": "flexEnd",
   "alignContent": "flexEnd",
   "width": "inherit",
-  "marginLeft": "34em",
+  "marginLeft": "44em",
 }
 
 const AppStructure = (props) => {

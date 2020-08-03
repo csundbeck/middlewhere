@@ -3,7 +3,6 @@ import './App.css';
 import Router from './Router';
 import { BrowserRouter } from 'react-router-dom';
 import AppStructure from './components/AppStructure';
-import $ from 'jquery';
 
 class App extends React.Component {
   constructor(props) {

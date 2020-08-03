@@ -1,17 +1,4 @@
 import React from 'react';
-import { Button } from '@material-ui/core';
-import { Link } from "react-router-dom";
-import $ from 'jquery';
-
-const buttonStyle = {
-    "backgroundColor": "#FD7272",
-    "width": "8em",
-    "padding": "1%",
-    "color": "#F8EFBA",
-    "cursor": "pointer",
-    "fontSize": 18,
-    "fontFamily": "'Open Sans', sans-serif"
-}
 
 // var array = [1, 2, 3];
 
@@ -24,7 +11,7 @@ var center = {
     lat: (position1.lat + position2.lat + position3.lat)/3,
     lng: (position1.lng + position2.lng + position3.lng)/3
 }
-var centerString = center.lat + ',' + center.lng;
+var centerString = toString(center.lat + ',' + center.lng);
 
 class Map extends React.Component {
     constructor(props) {
@@ -37,11 +24,18 @@ class Map extends React.Component {
     // ${centerString}
     componentDidMount() {
         this.renderMap();
-        this.setState({ loading: true })
-        fetch('https://api.punkapi.com/v2/beers')
-        //fetch(`http://www.mapquestapi.com/search/v2/radius?key=1DKzmIgGIdWLCAu8uLqBeH6IaLd7fTdH&radius=5&units=m&maxMatches=20&origin=30.266666,-97.733330`)
-            .then(res => res.json())
-            .then(pointsOfInterest => this.setState({ pointsOfInterest }))
+        // console.log(this.state.loading);
+        // console.log('inside compaonentDidMount')
+        // if (this.state.loading === false) {
+        // this.setState((prevState) =>  {
+        //     console.log(!prevState.loading);
+        //     return { loading: !prevState.loading }
+        // })};
+        // console.log(this.state.loading);
+        // // fetch('https://api.punkapi.com/v2/beers')
+        // fetch(`https://www.mapquestapi.com/search/v2/radius?key=1DKzmIgGIdWLCAu8uLqBeH6IaLd7fTdH&radius=5&units=m&maxMatches=20&origin=30.266666,-97.733330`)
+        //     .then(res => res.json())
+        //     .then(pointsOfInterest => this.setState({ pointsOfInterest }));
     }
 
     renderMap = () => {
@@ -72,8 +66,109 @@ class Map extends React.Component {
                 <section onLoad={this.reloadPage} id="map"></section>
                 <section id="placesSection" onLoad={this.fetchPOIs}>
                     <h3 style={{textAlign: 'center',}}>What's in the middle?</h3>
-                    <p>{console.log(this.state.pointsOfInterest.searchResults)}</p>
                     <ul>
+                        <li className='poiItem'>
+                            <div id='savePlaceContainer'>
+                            <i id='heart1' className="like-button far fa-heart" aria-hidden="true">{document.querySelector('#heart1')}</i>
+                            </div>
+                            <div id='placeDetails'>
+                                <p>Giovanni's Table</p>
+                                <p>11701 Bee Cave Rd #105, Bee Cave, TX</p>
+                                <p>(512) 386-1155</p>
+                            </div>
+                        </li>
+                        <li className='poiItem'>
+                            <div id='savePlaceContainer'>
+                                <i className="like-button far fa-heart" aria-hidden="true"></i>
+                            </div>
+                            <div id='placeDetails'>
+                                <p>The Oasis On Lake Travis</p>
+                                <p>6550 Comanche Trail, Austin, TX</p>
+                                <p>(512) 266-2442</p>
+                            </div>
+                        </li>
+                        <li className='poiItem'>
+                            <div id='savePlaceContainer'>
+                                <i id='heart3' className="like-button far fa-heart" aria-hidden="true"></i>
+                            </div>
+                            <div id='placeDetails'>
+                                <p>Copper Restaurant & Dessert Lounge</p>
+                                <p>401 Esperanza Crossing #104, Austin, TX</p>
+                                <p>(512) 215-3633</p>
+                            </div>
+                        </li>
+                        <li className='poiItem'>
+                            <div id='savePlaceContainer'>
+                                <i className="like-button far fa-heart" aria-hidden="true"></i>
+                            </div>
+                            <div id='placeDetails'>
+                                <p>CRÚ Food & Wine Bar - The Domain</p>
+                                <p>11410 Century Oaks Terrace #104, Austin, TX</p>
+                                <p>(512) 339-9463</p>
+                            </div>
+                        </li>
+                        <li className='poiItem'>
+                            <div id='savePlaceContainer'>
+                                <i id='heart5' className="like-button far fa-heart" aria-hidden="true"></i>
+                            </div>
+                            <div id='placeDetails'>
+                                <p>Gloria's Latin Cuisine</p>
+                                <p>3309 Esperanza Crossing Suite #100, Austin</p>
+                                <p>(512) 833-6400</p>
+                            </div>
+                        </li>
+                        <li className='poiItem'>
+                            <div id='savePlaceContainer'>
+                                <i className="like-button far fa-heart" aria-hidden="true"></i>
+                            </div>
+                            <div id='placeDetails'>
+                                <p>Thai Cuisine</p>
+                                <p>Silver Creek Center, 4101 W Parmer Ln F, Austin, TX</p>
+                                <p>(512) 835-7888</p>
+                            </div>
+                        </li>
+                        <li className='poiItem'>
+                            <div id='savePlaceContainer'>
+                                <i className="like-button far fa-heart" aria-hidden="true"></i>
+                            </div>
+                            <div id='placeDetails'>
+                                <p>Freddy's Frozen Custard & Steakburgers</p>
+                                <p>2602 W Pecan St, Pflugerville, TX</p>
+                                <p>(512) 251-9332</p>
+                            </div>
+                        </li>
+                        <li className='poiItem'>
+                            <div id='savePlaceContainer'>
+                                <i className="like-button far fa-heart" aria-hidden="true"></i>
+                            </div>
+                            <div id='placeDetails'>
+                                <p>Shake Shack</p>
+                                <p>11228 Domain Dr, Austin, TX</p>
+                                <p>(512) 717-0422</p>
+                            </div>
+                        </li>
+                        <li className='poiItem'>
+                            <div id='savePlaceContainer'>
+                                <i className="like-button far fa-heart" aria-hidden="true"></i>
+                            </div>
+                            <div id='placeDetails'>
+                                <p>New Fortune Chinese Seafood Restaurant</p>
+                                <p>10901 N Lamar Blvd, Austin, TX</p>
+                                <p>(512) 832-9992</p>
+                            </div>
+                        </li>
+                        <li className='poiItem'>
+                            <div id='savePlaceContainer'>
+                                <i className="like-button far fa-heart" aria-hidden="true"></i>
+                            </div>
+                            <div id='placeDetails'>
+                                <p>Chez Zee American Bistro</p>
+                                <p>5406 Balcones Dr, Austin, TX</p>
+                                <p>(512) 454-2666</p>
+                            </div>
+                        </li>
+                    </ul>
+                    {/* <ul>
                         {this.state.pointsOfInterest.map((poi, index) => 
                             <li className='poiItem' key={index}>
                             <div id='savePlaceContainer'>
@@ -85,12 +180,12 @@ class Map extends React.Component {
                             </div>
                         </li>
                         )}
-                    </ul>
+                    </ul> */}
                     {/* <ul id='poiList'>{
                     this.state.loading ? (
                         <div>Loading...</div> 
                     ) : (
-                        this.state.pointsOfInterest.searchResults.map((poi, index) =>
+                        this.state.pointsOfInterest.searchResults !== undefined && this.state.pointsOfInterest.searchResults.map((poi, index) =>
                             <li className='poiItem' key={index}>
                                 <div id='savePlaceContainer'>
                                     <i className="like-button far fa-heart" aria-hidden="true"></i>
@@ -104,6 +199,8 @@ class Map extends React.Component {
                         )
                     )}</ul> */}
                 </section>
+                <p>{console.log(document.getElementById('heart1'))
+}</p>
             </div>
         );
     }
@@ -117,11 +214,8 @@ function loadScript(url) {
     script.defer = true;
     index.parentNode.insertBefore(script, index);
 }
-
-const likePlace = (i) => {
-    console.log('clicked')
-    console.log(document.getElementById(`heart-${i}`));
-    // document.getElementById(`heart-0`).classList.toggle('liked');
-}
+        // document.getElementById('heart1').addEventListener('click', function() {
+        //     document.getElementById(`heart1`).classList.toggle('liked');
+        // });
 
 export default Map;
