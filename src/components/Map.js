@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 
 // var array = [1, 2, 3];
 
@@ -213,9 +214,23 @@ function loadScript(url) {
     script.async = true;
     script.defer = true;
     index.parentNode.insertBefore(script, index);
+
+    $("#heart1").click(function(){
+        $("#heart1").toggleClass("liked");
+    });
+
+    $("#heart3").click(function(){
+        $("#heart3").toggleClass("liked");
+    });
+
+    $("#heart5").click(function(){
+        $("#heart5").toggleClass("liked");
+    });
 }
         // document.getElementById('heart1').addEventListener('click', function() {
         //     document.getElementById(`heart1`).classList.toggle('liked');
         // });
+
+
 
 export default Map;
